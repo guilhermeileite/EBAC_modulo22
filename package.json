@@ -1,0 +1,17 @@
+{
+  "name": "cy-appactions",
+  "version": "1.0.0",
+  "description": "Exercicio de AppActions",
+  "main": "index.js",
+  "scripts": {
+    "test": "npx cypress run"
+  },
+  "author": "guilhermeleite",
+  "license": "ISC",
+  "dependencies": {
+    "cypress": "^13.7.2"
+  },
+  "devDependencies": {
+    "@faker-js/faker": "^8.4.1"
+  }
+}
