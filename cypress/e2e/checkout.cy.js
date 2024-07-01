@@ -1,6 +1,6 @@
 describe('Exercicio módulo 23', () => {
     it('fluxo de checkout', () => {
-      cy.login('Jasen_Donnelly3@hotmail.com', 'text123')
+      cy.login('guilhermeleite@ebac.com', 'text123')
   
       cy.addItemInCart(2970, 34, 'Blue', 2)
   
