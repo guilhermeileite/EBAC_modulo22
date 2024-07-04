@@ -1,15 +1,15 @@
 describe('Exercicio módulo 23', () => {
-    it('fluxo de checkout', () => {
-      cy.login(email, password)
-  
-      cy.addItemInCart(2970, 34, 'Blue', 2)
-  
-      cy.visit('http://lojaebac.ebaconline.art.br/carrinho/')
+    it('fluxo de checkout', () => {  
+      cy.visit('http://lojaebac.ebaconline.art.br/minha-conta/')
+      cy.get('#reg_email').type('guilhermeleite@ebac.com')
+      cy.get('#reg_password').type('Aluno@ebac2024')  
+      cy.get(':nth-child(4) > .button').click()
+      cy.get('#primary-menu > .menu-item-629 > a').click()
+      cy.addItemInCart('Abominable Hoodie', 'XS', 'Blue', 2)
       cy.get('.checkout-button').click()
       cy.get('#payment_method_cod').click()
       cy.get('#terms').click()
       cy.get('#place_order').click()
-  
       cy.contains('Obrigado. Seu pedido foi recebido.').should('be.visible')
     })
   })

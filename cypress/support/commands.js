@@ -40,11 +40,11 @@ Cypress.Commands.add('login', (email, password) => {
     cy.visit('http://lojaebac.ebaconline.art.br/minha-conta/')
 })
 
-Cypress.Commands.add('addItemInCart', (productId, color, size, quantity) => {
+Cypress.Commands.add('addItemInCart', (productTitle, size, color, quantity) => {
     cy.intercept('POST', '/users*', {
         statusCode: 201,
         body: {
-            product_id: productId,
+            product_title: productTitle,
             attribute_size: size,
             attribute_color: color,
             quantity: quantity
