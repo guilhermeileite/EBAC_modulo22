@@ -40,15 +40,19 @@ Cypress.Commands.add('login', (email, password) => {
     cy.visit('http://lojaebac.ebaconline.art.br/minha-conta/')
 })
 
-Cypress.Commands.add('addItemInCart', (productTitle, size, color, quantity) => {
-    cy.intercept('POST', '/users*', {
+Cypress.Commands.add('addItemInCart', (size, color, quantity, addToCart, productId, variationId) => {
+
+    const formData = new FormData();
+    formData.append('attribute_size', size);
+    formData.append('attribute_color', color);
+    formData.append('quantity', quantity);
+    formData.append('add_to_cart', addToCart);
+    formData.append('product_id', productId);
+    formData.append('variation_id', variationId);
+
+    cy.intercept('POST', 'http://lojaebac.ebaconline.art.br/minha-conta/', {
         statusCode: 201,
-        body: {
-            product_title: productTitle,
-            attribute_size: size,
-            attribute_color: color,
-            quantity: quantity
-        },
+
     })
 
     cy.visit('http://lojaebac.ebaconline.art.br/carrinho/')
