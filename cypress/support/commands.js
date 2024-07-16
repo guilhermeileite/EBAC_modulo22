@@ -40,6 +40,7 @@ Cypress.Commands.add('login', (email, password) => {
     cy.visit('http://lojaebac.ebaconline.art.br/minha-conta/')
 })
 
+/*
 Cypress.Commands.add('addItemInCart', (size, color, quantity, addToCart, productId, variationId) => {
 
     const formData = new FormData();
@@ -50,10 +51,53 @@ Cypress.Commands.add('addItemInCart', (size, color, quantity, addToCart, product
     formData.append('product_id', productId);
     formData.append('variation_id', variationId);
 
-    cy.intercept('POST', 'http://lojaebac.ebaconline.art.br/minha-conta/', {
+    cy.intercept('POST', '/users*', {
         statusCode: 201,
 
     })
 
     cy.visit('http://lojaebac.ebaconline.art.br/carrinho/')
-})
+}) */
+    
+    
+    Cypress.Commands.add('addItemInCart2', (productTitle, size, color, quantity, productId, variationId) => {
+    
+      const formdata = new FormData()
+    
+      formdata.append('attribute_size', size)
+    
+      formdata.append('attribute_color', color)
+    
+      formdata.append('quantity', quantity)
+    
+      formdata.append('add-to-cart', productId)
+    
+      formdata.append('product_id', productId)
+    
+      formdata.append('variation_id', variationId)
+    
+    
+    
+      cy.request({
+    
+        url: '/product/' + productTitle, // https://lojaebac.ebaconline.art.br/product/ingrid-running-jacket/
+    
+        method: 'POST',
+    
+        body: formdata,
+    
+        headers: {
+    
+          'Content-Type': 'multipart/form-data'
+    
+        }
+    
+      }).then((response) => {
+    
+        expect(response.status).to.eq(200)
+    
+      })
+    
+      cy.visit('carrinho')
+    
+    })
