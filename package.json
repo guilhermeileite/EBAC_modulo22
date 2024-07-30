@@ -4,7 +4,8 @@
   "description": "Exercicio de AppActions",
   "main": "index.js",
   "scripts": {
-    "test": "npx cypress run"
+    "test": "npx cypress run",
+    "start": "npm start"
   },
   "author": "guilhermeleite",
   "license": "ISC",
